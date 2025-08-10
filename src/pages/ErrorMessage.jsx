@@ -29,11 +29,14 @@ function ErrorMessage() {
         }
         setErrorText("");
         try {
-            const response = await fetch("https://pushandpray.pythonanywhere.com/error_message/", {
-                method: "POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({error_type: selectedCategory}),
-            });
+            const response = await fetch(
+                "https://pushandpray.pythonanywhere.com/error_message/",
+                {
+                    method: "POST",
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({error_type: selectedCategory}),
+                }
+            );
             if (!response.ok) {
                 throw new Error(`Ошибка сервера: ${response.statusText} ${response.status}`);
             }
@@ -59,15 +62,27 @@ function ErrorMessage() {
                 backgroundColor: "#f8f4e3",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "flex-start",
                 alignItems: "center",
-                paddingTop: "10vh",
-                paddingBottom: "15vh",
+                padding: "5vh 1em",
                 boxSizing: "border-box",
             }}
         >
-            <Container text style={{maxWidth: 600, width: "100%"}}>
-                <Header as="h2" textAlign="center" style={{marginBottom: "1.5em", color: "#4b3832"}}>
+            <Container
+                text
+                style={{
+                    maxWidth: 600,
+                    width: "100%",
+                }}
+            >
+                <Header
+                    as="h2"
+                    textAlign="center"
+                    style={{
+                        marginBottom: "1.5em",
+                        color: "#4b3832",
+                        fontSize: "clamp(1.5rem, 5vw, 2rem)",
+                    }}
+                >
                     Выберите категорию ошибки
                 </Header>
                 <Form>
@@ -78,27 +93,44 @@ function ErrorMessage() {
                             value={cat.value}
                             checked={selectedCategory === cat.value}
                             onChange={handleChange}
-                            style={{padding: "0.5em 0"}}
+                            style={{
+                                padding: "0.5em 0",
+                                fontSize: "clamp(1rem, 4vw, 1.1rem)",
+                            }}
                         />
                     ))}
                     <Button
                         primary
                         fluid
                         onClick={handleClick}
-                        style={{marginTop: "2em", borderRadius: "8px", backgroundColor: "#4b3832"}}
+                        style={{
+                            marginTop: "2em",
+                            borderRadius: "8px",
+                            backgroundColor: "#4b3832",
+                            fontSize: "clamp(1rem, 4vw, 1.1rem)",
+                            padding: "1em",
+                        }}
                         content="Получить сообщение"
                     />
                 </Form>
 
                 {errorText && (
-                    <Segment color="red" style={{marginTop: "1.5em"}}>
+                    <Segment color="red" style={{marginTop: "1.5em", fontSize: "1rem"}}>
                         {errorText}
                     </Segment>
                 )}
 
                 {errorMessages.length > 0 && (
-                    <Segment style={{marginTop: "1.5em", backgroundColor: "#fff8e1"}}>
-                        <Header as="h3" style={{color: "#4b3832"}}>Шуточные сообщения:</Header>
+                    <Segment
+                        style={{
+                            marginTop: "1.5em",
+                            backgroundColor: "#fff8e1",
+                            fontSize: "clamp(0.9rem, 3.5vw, 1rem)",
+                        }}
+                    >
+                        <Header as="h3" style={{color: "#4b3832"}}>
+                            Сообщения об ошибке:
+                        </Header>
                         <List bulleted relaxed>
                             {errorMessages.map((msg, idx) => (
                                 <List.Item key={idx} style={{color: "#4b3832"}}>

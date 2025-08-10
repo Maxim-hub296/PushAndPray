@@ -27,13 +27,7 @@ function About() {
 
     if (error) {
         return (
-            <div style={{
-                backgroundColor: "#f8f4e3",
-                minHeight: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
-            }}>
+            <div style={styles.page}>
                 <Container textAlign="center">
                     <Header as="h1" color="red">Ошибка</Header>
                     <p>{error}</p>
@@ -44,38 +38,25 @@ function About() {
 
     if (!data) {
         return (
-            <div style={{
-                backgroundColor: "#f8f4e3",
-                minHeight: "100vh",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center"
-            }}>
+            <div style={styles.page}>
                 <Header as="h1">Загрузка...</Header>
             </div>
         );
     }
 
     return (
-        <div style={{
-            backgroundColor: "#f8f4e3",
-            minHeight: "100vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "2em"
-        }}>
-            <Container style={{maxWidth: "800px"}}>
-                <Segment raised style={{backgroundColor: "#fffaf0", padding: "2em"}}>
-                    <Header as="h1" dividing>
-                        <Icon name="info circle" color="blue" />
+        <div style={styles.page}>
+            <Container style={styles.container}>
+                <Segment raised style={styles.segment}>
+                    <Header as="h1" dividing style={styles.header}>
+                        <Icon name="info circle" color="blue"/>
                         {data.title}
                     </Header>
-                    <p style={{fontStyle: "italic", color: "#444"}}>“{data.intro}”</p>
+                    <p style={styles.intro}>“{data.intro}”</p>
 
-                    <Segment color="teal">
-                        <Header as="h3" dividing>
-                            <Icon name="lightbulb" color="yellow" />
+                    <Segment color="teal" style={styles.innerSegment}>
+                        <Header as="h3" dividing style={styles.subHeader}>
+                            <Icon name="lightbulb" color="yellow"/>
                             Наши убеждения
                         </Header>
                         <List bulleted>
@@ -85,9 +66,9 @@ function About() {
                         </List>
                     </Segment>
 
-                    <Segment color="red">
-                        <Header as="h3" dividing>
-                            <Icon name="warning sign" color="red" />
+                    <Segment color="red" style={styles.innerSegment}>
+                        <Header as="h3" dividing style={styles.subHeader}>
+                            <Icon name="warning sign" color="red"/>
                             Дисклеймер
                         </Header>
                         <List bulleted>
@@ -103,9 +84,10 @@ function About() {
                             size="large"
                             icon
                             labelPosition="left"
+                            style={styles.button}
                             onClick={() => navigate("/")}
                         >
-                            <Icon name="home" />
+                            <Icon name="home"/>
                             На главную
                         </Button>
                     </div>
@@ -114,5 +96,59 @@ function About() {
         </div>
     );
 }
+
+const styles = {
+    page: {
+        backgroundColor: "#f8f4e3",
+        minHeight: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "2em",
+    },
+    container: {
+        maxWidth: "800px",
+        width: "100%",
+    },
+    segment: {
+        backgroundColor: "#fffaf0",
+        padding: "2em",
+    },
+    innerSegment: {
+        wordWrap: "break-word",
+    },
+    header: {
+        fontSize: "2em",
+    },
+    subHeader: {
+        fontSize: "1.2em",
+    },
+    intro: {
+        fontStyle: "italic",
+        color: "#444",
+        marginBottom: "1.5em",
+    },
+    button: {
+        width: "auto",
+    },
+    // Мобильная адаптация
+    "@media screen and (max-width: 768px)": {
+        page: {
+            padding: "1em",
+        },
+        segment: {
+            padding: "1em",
+        },
+        header: {
+            fontSize: "1.5em",
+        },
+        subHeader: {
+            fontSize: "1em",
+        },
+        button: {
+            width: "100%",
+        },
+    },
+};
 
 export default About;

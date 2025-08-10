@@ -1,6 +1,6 @@
 import React from "react";
-import {Container, Header, Button} from "semantic-ui-react";
-import {Link} from "react-router-dom";
+import { Container, Header, Button } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 function Home() {
     return (
@@ -10,7 +10,8 @@ function Home() {
                 backgroundColor: "#f8f4e3",
                 display: "flex",
                 justifyContent: "center",
-                alignItems: "center"
+                alignItems: "center",
+                padding: "1em"
             }}
         >
             <Container textAlign="center">
@@ -24,18 +25,17 @@ function Home() {
                 >
                     Добро пожаловать в Push & Pray
                 </Header>
-                <p style={{fontSize: "1.2em", color: "#6b5e54"}}>
+                <p style={{ fontSize: "1.2em", color: "#6b5e54" }}>
                     Выберите, что хотите получить:
                 </p>
 
-                {/* Ряд из трёх кнопок */}
                 <div
                     style={{
                         display: "flex",
+                        flexWrap: "wrap",
                         justifyContent: "center",
                         gap: "1em",
-                        marginTop: "1.5em",
-                        position: "relative"
+                        marginTop: "1.5em"
                     }}
                 >
                     <Button
@@ -46,18 +46,22 @@ function Home() {
                         style={{
                             backgroundColor: "#4a90e2",
                             color: "white",
-                            width: "250px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            textAlign: "center"
+                            flex: "1 1 250px",
+                            minWidth: "200px"
                         }}
                     >
                         Сообщение коммита
                     </Button>
 
-
-                    <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            flex: "1 1 250px",
+                            minWidth: "200px"
+                        }}
+                    >
                         <Button
                             as={Link}
                             to={'/excuse'}
@@ -65,7 +69,7 @@ function Home() {
                             style={{
                                 backgroundColor: "#3a7d7d",
                                 color: "white",
-                                width: "250px"
+                                width: "100%"
                             }}
                         >
                             Получить оправдание
@@ -77,7 +81,7 @@ function Home() {
                             style={{
                                 backgroundColor: "#8e735b",
                                 color: "white",
-                                width: "200px",
+                                width: "80%",
                                 marginTop: "0.5em"
                             }}
                         >
@@ -92,11 +96,8 @@ function Home() {
                         style={{
                             backgroundColor: "#c94c4c",
                             color: "white",
-                            width: "250px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            textAlign: "center"
+                            flex: "1 1 250px",
+                            minWidth: "200px"
                         }}
                     >
                         Получить сообщение об ошибке
