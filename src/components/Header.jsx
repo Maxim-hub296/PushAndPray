@@ -26,19 +26,29 @@ function Header() {
                 </Menu.Item>
 
                 <Menu.Item
-                    as="a"
-                    onClick={() => alert("Заглушка: Сообщение для коммита")}
+                    as={Link}
+                    to={'/commit_message'}
+                    active={location.pathname === "/commit_message"}
                 >
                     Сообщение для коммита
                 </Menu.Item>
 
                 <Menu.Item
-                    as="a"
-                    onClick={() => alert("Заглушка: Оправдание")}
+                    as={Link}
+                    to='/excuse'
+                    active={location.pathname === "/excuse"}
                 >
                     Оправдание
                 </Menu.Item>
+
+                <Menu.Item as={Link} to={'/error_message'}
+                           active={location.pathname === "/error_message"}>
+                    Сообщение об ошибке
+                </Menu.Item>
+
             </Container>
         </Menu>
     );
 }
+
+export default Header
