@@ -54,6 +54,7 @@ function Excuse() {
         }
     };
 
+
     return (
         <div
             style={{
@@ -85,29 +86,39 @@ function Excuse() {
                     Выберите причину оправдания
                 </Header>
                 <Form>
-                    {reasons.map((reason) => (
-                        <Form.Radio
-                            key={reason.value}
-                            label={reason.label}
-                            value={reason.value}
-                            checked={selectedReason === reason.value}
-                            onChange={handleChange}
-                            style={{
-                                padding: "0.5em 0",
-                                fontSize: "clamp(1rem, 4vw, 1.1rem)",
-                            }}
-                        />
-                    ))}
+                    {/* Обернули радиокнопки в контейнер с maxWidth и центрированием */}
+                    <div style={{maxWidth: 400, margin: "0 auto"}}>
+                        {reasons.map((reason) => (
+                            <Form.Radio
+                                key={reason.value}
+                                label={reason.label}
+                                value={reason.value}
+                                checked={selectedReason === reason.value}
+                                onChange={handleChange}
+                                style={{
+                                    padding: "0.5em 0",
+                                    fontSize: "clamp(1rem, 4vw, 1.1rem)",
+                                    width: "auto",
+                                    display: "inline-flex",
+                                }}
+                            />
+                        ))}
+                    </div>
+
                     <Button
                         primary
-                        fluid
+                        fluid={false} // выключаем растягивание
                         onClick={handleClick}
                         style={{
                             marginTop: "2em",
                             borderRadius: "8px",
                             backgroundColor: "#4b3832",
                             fontSize: "clamp(1rem, 4vw, 1.1rem)",
-                            padding: "1em",
+                            padding: "1em 2.5em",
+                            cursor: "pointer",
+                            display: "block",
+                            marginLeft: "auto",
+                            marginRight: "auto",
                         }}
                         content="Получить оправдание"
                     />
@@ -139,7 +150,9 @@ function Excuse() {
                             fontStyle: "italic",
                             fontSize: "clamp(1rem, 4vw, 1.1rem)",
                             boxShadow: "0 0 10px rgba(75,56,50,0.15)",
-                            maxWidth: "100%",
+                            maxWidth: 400,
+                            marginLeft: "auto",
+                            marginRight: "auto",
                             overflowWrap: "break-word",
                             padding: "1em",
                             boxSizing: "border-box",
@@ -156,7 +169,7 @@ function Excuse() {
                 )}
             </Container>
         </div>
-    );
+    )
 }
 
 export default Excuse;
