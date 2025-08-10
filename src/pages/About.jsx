@@ -10,7 +10,7 @@ function About() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:8000/about/');
+                const response = await fetch('https://pushandpray.pythonanywhere.com/about/');
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
@@ -27,18 +27,32 @@ function About() {
 
     if (error) {
         return (
-            <Container style={{marginTop: '2em'}}>
-                <Header as="h1" color="red">Ошибка</Header>
-                <p>{error}</p>
-            </Container>
+            <div style={{
+                backgroundColor: "#f8f4e3",
+                minHeight: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
+                <Container textAlign="center">
+                    <Header as="h1" color="red">Ошибка</Header>
+                    <p>{error}</p>
+                </Container>
+            </div>
         );
     }
 
     if (!data) {
         return (
-            <Container style={{marginTop: '2em'}}>
+            <div style={{
+                backgroundColor: "#f8f4e3",
+                minHeight: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}>
                 <Header as="h1">Загрузка...</Header>
-            </Container>
+            </div>
         );
     }
 
@@ -46,9 +60,12 @@ function About() {
         <div style={{
             backgroundColor: "#f8f4e3",
             minHeight: "100vh",
-            padding: "2em 0"
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "2em"
         }}>
-            <Container>
+            <Container style={{maxWidth: "800px"}}>
                 <Segment raised style={{backgroundColor: "#fffaf0", padding: "2em"}}>
                     <Header as="h1" dividing>
                         <Icon name="info circle" color="blue" />

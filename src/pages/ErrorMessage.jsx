@@ -29,7 +29,7 @@ function ErrorMessage() {
         }
         setErrorText("");
         try {
-            const response = await fetch("http://localhost:8000/error_message/", {
+            const response = await fetch("https://pushandpray.pythonanywhere.com/error_message/", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({error_type: selectedCategory}),

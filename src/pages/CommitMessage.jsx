@@ -30,7 +30,7 @@ function CommitMessage() {
     }
     setErrorText("");
     try {
-      const response = await fetch("http://localhost:8000/commit_message/", {
+      const response = await fetch("https://pushandpray.pythonanywhere.com/commit_message/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ commit_type: selectedType }),

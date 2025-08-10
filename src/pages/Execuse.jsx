@@ -31,7 +31,7 @@ function Excuse() {
     }
     setErrorText("");
     try {
-      const response = await fetch("http://localhost:8000/excuse/", {
+      const response = await fetch("https://pushandpray.pythonanywhere.com/excuse/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
